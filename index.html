@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta title="Python計算問題">
+    <meta author="nodbew">
+    <meta charset="utf-8">
+    <meta lang="ja">
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body class='centered-flexbox'>
+    <div class='centered-flexbox' style="width: 75vw; height: 80vh;">
+      <div class="tabs">
+        <label class="tab-item">
+          解く
+          <input id="problem" type="radio" checked>
+        </label>
+        <label class="tab-item">
+          デザイン
+          <input id="settings" type="radio">
+        </label>
+        <div class="tab-content" id="problem-content">
+          <div style="width: 100%; height: 60%;">
+            <textarea id="answer-area"></textarea>
+          </div>
+          <div class='centered-flexbox' style="width: 100%; height: 40%;">
+            <button id="submit" class="button active" style="height: 10%">チェック</button>
+            <button id="proceed" class="button" style="height: 10%">次へ</button>
+          </div>
+        </div>
+        <div class="tab-content" id="settings-content">
+          <div class='centered-flexbox'>
+            <textarea id="problem-area"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
