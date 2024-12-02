@@ -38,12 +38,13 @@ function correctMistakes(userAnswer) {
   return userAnswer;
 }
 
-function generateProblem(
-
-function getRandomNum(max) {
-  return Math.floor(Math.random() * max);
-}
+function generateProblem(problem, num) {
+  return removeRandom([...problem]);
 
 function removeRandom(options, numRemove) {
-  return [...new Array(numRemove)].map(_ => options.splice(getRandomNum(options.length), 1));
+  return [...new Array(numRemove)].forEach(_ => options.splice(getRandomNum(options.length), 1));
+}
+  
+function getRandomNum(max) {
+  return Math.floor(Math.random() * max);
 }
