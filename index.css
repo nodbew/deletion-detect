@@ -5,14 +5,6 @@
   align-items: center;
 }
 
-input[type="number"].correct{
-  color: green;
-}
-
-input[type="number"].wrong {
-  color: red;
-}
-
 .button {
   display: none;
 }
@@ -50,7 +42,7 @@ input[type="number"].wrong {
   opacity: 0.75;
 }
 
-input {
+.tab-item input[type='radio'] {
   display: none;
 }
 
@@ -61,12 +53,12 @@ input {
   overflow: hidden;
 }
 
-#problem:checked ~ #problem-content,
-#settings:checked ~ #settings-content, {
+.tab-item:has(#problem:checked) ~ #problem-content,
+.tab-item:has(#settings:checked) ~ #settings-content, {
   display: block;
 }
 
-.tabs input:checked + .tab-item {
+.tab-item:has(input:checked) {
   background-color: #5ab4bd;
   color: #fff;
 }
