@@ -32,13 +32,6 @@ textarea {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.tab-item-container {
-  position: absolute;
-  top: 0px;
-  margin: 0px;
-  width: 100%;
-}
-  
 .tab-item {
   width: 50%;
   height: calc(10vh - 3);
