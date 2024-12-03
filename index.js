@@ -31,8 +31,8 @@ proceedButton.addEventListener('click', () => {
     answerArea.value = generateProblem(settingArea.dataset.problem, deletionSetting.dataset.deletionNum);
   }
 });
-settingArea.addEventListener('input', (e) => { settingArea.dataset.problem = split(e.target.value) });
-deletionSetting.addEventListener('change', (e) => { deletionSetting.dataset.deletionNum = e.target.value });
+settingArea.addEventListener('change', () => { settingArea.dataset.problem = split(settingArea.value) });
+deletionSetting.addEventListener('change', () => { deletionSetting.dataset.deletionNum = deletionSetting.value });
 
 function correctMistakes(userAnswer, correctAnswers, problem) {
   for (idx in correctAnswers) {
