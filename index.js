@@ -40,19 +40,20 @@ settingArea.addEventListener('change', () => { settingArea.dataset.problem = str
 deletionSetting.addEventListener('change', () => { deletionSetting.dataset.deletionNum = str(deletionSetting.value); proceedButton.dispatchEvent(new Event('click')); });
 
 function correctMistakes(userAnswer, correctAnswers, problem) {
-  for (idx in correctAnswers) {
-    console.log(idx, userAnswer[idx], problem[idx])
-    if (userAnswer[idx] !== problem[idx] || userAnswer[idx] == undefined || problem[idx] == undefined) {
-      const span = document.createElement('span');
-      span.style.color = 'red';
-      span.textContent = (problem[idx] ?? 'EXTRA_WORD!') + ' ';
-      problem[idx] = span;
-    }
-  }
-
   const container = document.createElement('p');
-  container.style.color = 'green';
-  problem.forEach(e => typeof e === 'string' ? container.textContent += e + ' ' : container.appendChild(e));
+  problem.forEach((s, idx) => {
+    console.log(s, idx)
+    const span = document.createElement('span');
+    if (correctAnswers.includes(idx)) {
+      console.log('problem', userAnswer[idx], s)
+      span.style.color = (userAnswer[idx] === s) ? 'green' : 'red';
+      span.textContent = (s ?? 'EXTRA_WORD!') + ' ';
+    } else {
+      span.style.color = 'green';
+      span.textContent = s + ' ';
+    }
+    container.appendChild(span);
+  });
   return container;
 }
 
@@ -64,7 +65,10 @@ function generateProblem(problem, num) {
 }
 
 function removeRandom(options, numRemove) {
-  const indices = Array(numRemove * 1).fill(0).map(_ => getRandomNum(options.length));
+  let indices = Array(numRemove * 1).fill(0).map(_ => getRandomNum(options.length));
+  indices = [...new Set(indices)]; // remove duplicated indices
+  indices.sort();
+  indices.reverse();
   return indices.map(idx => {options.splice(idx, 1); return idx;});
 }
   
