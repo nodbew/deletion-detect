@@ -1,35 +1,50 @@
 <html>
   <head>
-    <meta title="削除検知">
-    <meta author="nodbew">
-    <meta charset="utf-8">
-    <meta lang="ja">
+    <meta title="削除検知" />
+    <meta author="nodbew" />
+    <meta charset="utf-8" />
+    <meta lang="ja" />
     <script src="index.js" defer></script>
     <link rel="stylesheet" href="index.css" />
   </head>
-  <body class='centered-flexbox'>
-    <div class='centered-flexbox' style="width: 75vw; height: 80vh;">
+  <body class="centered-flexbox">
+    <div class="centered-flexbox" style="width: 75vw; height: 80vh">
       <div class="tabs">
         <label class="tab-item">
           解く
-          <input id="problem" type="radio" name='tab' checked>
+          <input id="problem" type="radio" name="tab" checked />
         </label>
         <label class="tab-item">
           デザイン
-          <input id="settings" type="radio" name='tab'>
+          <input id="settings" type="radio" name="tab" />
         </label>
         <div class="tab-content" id="problem-content">
-          <div style="width: 100%; height: 60%;">
+          <div
+            class="centered-flexbox"
+            style="width: 100%; height: 60%; margin-bottom: 5%"
+          >
+            <p style="margin-bottom: 1px">元の文章を入力...</p>
             <textarea id="answer-area"></textarea>
           </div>
-          <div class='centered-flexbox' style="width: 100%; height: 40%;">
-            <button id="submit" class="button active" style="height: 10%">チェック</button>
-            <button id="proceed" class="button" style="height: 10%">次へ</button>
+          <div class="centered-flexbox" style="width: 100%; height: 40%">
+            <button id="submit" class="button active" style="height: 10%">
+              チェック
+            </button>
+            <button id="proceed" class="button" style="height: 10%">
+              次へ
+            </button>
           </div>
         </div>
         <div class="tab-content" id="settings-content">
-          <div class='centered-flexbox'>
-            <input type="number" id="deletion">
+          <div class="centered-flexbox">
+            <p style="margin-bottom: 1px">削除する単語数</p>
+            <input
+              type="number"
+              id="deletion"
+              value="3"
+              style="margin-bottom: 5%"
+            />
+            <p style="margin-bottom: 1px">元の文章</p>
             <textarea id="setting-area"></textarea>
           </div>
         </div>
