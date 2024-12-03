@@ -1,7 +1,7 @@
 .centered-flexbox {
-  display: flex; 
+  display: flex;
   flex-direction: column;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
 }
 
@@ -42,7 +42,7 @@
   opacity: 0.75;
 }
 
-.tab-item input[type='radio'] {
+.tab-item input[type="radio"] {
   display: none;
 }
 
@@ -53,8 +53,10 @@
   overflow: hidden;
 }
 
-.tab-item:has(#problem:checked) ~ #problem-content,
-.tab-item:has(#settings:checked) ~ #settings-content, {
+.tab-item:has(#problem:checked) ~ #problem-content {
+  display: block;
+}
+.tab-item:has(#settings:checked) ~ #settings-content {
   display: block;
 }
 
