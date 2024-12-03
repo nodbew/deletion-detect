@@ -17,7 +17,7 @@ submitButton.addEventListener('click', () => {
   answerAreaLabel.style.display = 'none';
   resultArea.style.display = 'block';
   // To add stylings for mistaken parts
-  resultArea.appendChild(correctMistakes(split(answerArea.value), settingArea.dataset.answer, settingArea.dataset.problem));
+  resultArea.appendChild(correctMistakes(split(answerArea.value), JSON.parse(settingArea.dataset.answer), JSON.parse(settingArea.dataset.problem)));
 });
 proceedButton.addEventListener('click', () => {
   submitButton.classList.add('active');
@@ -41,17 +41,18 @@ deletionSetting.addEventListener('change', () => { deletionSetting.dataset.delet
 
 function correctMistakes(userAnswer, correctAnswers, problem) {
   for (idx in correctAnswers) {
-    if (userAnswer[idx] !== problem[idx]) {
+    console.log(idx, userAnswer[idx], problem[idx])
+    if (userAnswer[idx] !== problem[idx] || userAnswer[idx] == undefined || problem[idx] == undefined) {
       const span = document.createElement('span');
       span.style.color = 'red';
-      span.textContent = userAnswer[idx];
-      userAnswer[idx] = span;
+      span.textContent = (problem[idx] ?? 'EXTRA_WORD!') + ' ';
+      problem[idx] = span;
     }
   }
 
   const container = document.createElement('p');
   container.style.color = 'green';
-  userAnswer.forEach(e => typeof e === 'string' ? container.textContent += e : container.appendChild(e));
+  problem.forEach(e => typeof e === 'string' ? container.textContent += e + ' ' : container.appendChild(e));
   return container;
 }
 
@@ -63,11 +64,8 @@ function generateProblem(problem, num) {
 }
 
 function removeRandom(options, numRemove) {
-  return [...new Array(numRemove)].map(_ => {
-    const idx = getRandomNum(options.length);
-    options.splice(idx, 1);
-    return idx;
-  });
+  const indices = Array(numRemove * 1).fill(0).map(_ => getRandomNum(options.length));
+  return indices.map(idx => {options.splice(idx, 1); return idx;});
 }
   
 function getRandomNum(max) {
