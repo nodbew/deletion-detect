@@ -6,7 +6,7 @@ const settingArea = document.getElementById('setting-area');
 const deletionSetting = document.getElementById('deletion');
 
 // Initialize
-answerArea.textContent = "問題を追加してください";
+answerArea.value = "問題を追加してください";
 submitButton.disabled = true;
 
 submitButton.addEventListener('click', () => {
@@ -31,8 +31,8 @@ proceedButton.addEventListener('click', () => {
     answerArea.value = generateProblem(settingArea.dataset.problem, deletionSetting.dataset.deletionNum);
   }
 });
-settingArea.addEventListener('change', () => { settingArea.dataset.problem = split(settingArea.value) });
-deletionSetting.addEventListener('change', () => { deletionSetting.dataset.deletionNum = deletionSetting.value });
+settingArea.addEventListener('change', () => { settingArea.dataset.problem = split(settingArea.value); proceedButton.dispatchEvent('click'); });
+deletionSetting.addEventListener('change', () => { deletionSetting.dataset.deletionNum = deletionSetting.value; proceedButton.dispatchEvent('click'); });
 
 function correctMistakes(userAnswer, correctAnswers, problem) {
   for (idx in correctAnswers) {
