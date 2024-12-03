@@ -21,6 +21,8 @@
 }
 
 .tab-item {
+  position: fixed;
+  margin-top: 0px;
   width: 50%;
   height: calc(10vh - 3);
   border-bottom: 3px solid #5ab4bd;
